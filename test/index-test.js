@@ -1,5 +1,5 @@
 const createStore  = require('../src/createStore');
-const todosReducer = require('../src/reducers/todosReducer');
+const candyReducer = require('../src/reducers/candyReducer');
 const countReducer = require('../src/reducers/countReducer');
 const sinon        = require('sinon');
 
@@ -7,7 +7,7 @@ describe('createStore', function() {
   let store, countStore;
 
   beforeEach(function(){
-    store = createStore(todosReducer);
+    store = createStore(candyReducer);
     countStore = createStore(countReducer);
   })
 
@@ -30,20 +30,20 @@ describe('createStore', function() {
     })
 
     it('can dispatch actions with data associated', function(){
-      store.dispatch({type: 'ADD_TODO', todo: {content: "Buy Milk"}});
+      store.dispatch({type: 'ADD_CANDY', candy: {name: "Jelly Beans"}});
       let todos = store.getState();
-      expect(todos).toEqual([{content: "Buy Milk"}]);
+      expect(todos).toEqual([{name: "Jelly Beans"}]);
     })
   })
 
   describe('subscribe', function(){
     it('calls any listeners that the store is subscribed to', function(){
-      const fakeListener = { listener: () => console.log("Todos have been updated!") }
+      const fakeListener = { listener: () => console.log("Candy added!") }
 
       sinon.spy(fakeListener, 'listener');
       store.subscribe(fakeListener.listener )
 
-      store.dispatch({type: 'ADD_TODO', todo: {content: "Buy Milk"}});
+      store.dispatch({type: 'ADD_CANDY', candy: {name: "Twix"}});
       expect(fakeListener.listener.called).toEqual(true);
     })
   })
