@@ -34,7 +34,8 @@
     "jsdom": "^9.4.1",
     "mocha": "^3.0.1",
     "mocha-multi": "^0.9.1",
-    "node-inspector": "^0.12.8"
+    "node-inspector": "^0.12.8",
+    "sinon": "^1.17.6"
   },
   "dependencies": {
     "react": "^15.3.0",
