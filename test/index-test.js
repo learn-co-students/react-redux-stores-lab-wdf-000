@@ -1,7 +1,7 @@
-const createStore  = require('../src/createStore');
-const candyReducer = require('../src/reducers/candyReducer');
-const countReducer = require('../src/reducers/countReducer');
-const sinon        = require('sinon');
+import createStore  from '../src/createStore';
+import candyReducer from '../src/reducers/candyReducer';
+import countReducer from '../src/reducers/countReducer';
+import sinon        from 'sinon';
 
 describe('createStore', function() {
   let store, countStore;
