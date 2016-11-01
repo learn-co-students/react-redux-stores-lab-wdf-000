@@ -22,4 +22,4 @@ function createStore(reducer){
   }
 }
 
-module.exports = createStore;
+export default createStore;

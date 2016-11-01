@@ -9,4 +9,4 @@ function countReducer(state=0, action){
   }
 }
 
-module.exports = countReducer;
+export default countReducer;
