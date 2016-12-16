@@ -19,6 +19,8 @@ For now, we'll want to create two different stores - one to keep track of all of
   + `subscribe` should take in a function to get called when the state updates
   + `dispatch` should take in an action, update the state using the reducer, and call any event handlers.
 
+>Note: Don't forget, you're initial state for each store should be set by the _reducer_. You'll have to dispatch some sort of 'initialize' action to get your state set!
+
 ## Resources
 
 - [Redux Documentation](http://redux.js.org/docs/basics/Store.html)
