@@ -4,21 +4,25 @@ import countReducer from '../src/reducers/countReducer';
 import sinon        from 'sinon';
 
 describe('createStore', function() {
-  let store, countStore;
+  let candyStore, countStore;
 
   beforeEach(function(){
-    store = createStore(candyReducer);
+    candyStore = createStore(candyReducer);
     countStore = createStore(countReducer);
   })
 
   it('returns an object', function() {
-    expect(store).toBeA(Object)
+    expect(candyStore).toBeA(Object)
   })
 
   describe('getState', function(){
-    it('returns the default state based on the reducer', function(){
-      expect(store.getState()).toEqual([]);
-      expect(countStore.getState()).toEqual(0);
+    it('returns the default state based on the reducer for the candyStore', function(){
+      expect(candyStore.getState()).toEqual([]);
+    })
+
+    it('returns the default state based on the reducer for the countStore', function(){
+      expect(countStore.getState()).toBeA('number')
+      expect(countStore.getState()).toEqual(0)
     })
   })
 
@@ -27,11 +31,12 @@ describe('createStore', function() {
     it('can dispatch actions to update the state', function(){
       countStore.dispatch({type: 'INCREMENT_COUNT'});
       expect(countStore.getState()).toEqual(1);
+
     })
 
     it('can dispatch actions with data associated', function(){
-      store.dispatch({type: 'ADD_CANDY', candy: {name: "Jelly Beans"}});
-      let todos = store.getState();
+      candyStore.dispatch({type: 'ADD_CANDY', candy: {name: "Jelly Beans"}});
+      let todos = candyStore.getState();
       expect(todos).toEqual([{name: "Jelly Beans"}]);
     })
   })
@@ -41,10 +46,11 @@ describe('createStore', function() {
       const fakeListener = { listener: () => console.log("Candy added!") }
 
       sinon.spy(fakeListener, 'listener');
-      store.subscribe(fakeListener.listener )
+      candyStore.subscribe(fakeListener.listener )
 
-      store.dispatch({type: 'ADD_CANDY', candy: {name: "Twix"}});
+      candyStore.dispatch({type: 'ADD_CANDY', candy: {name: "Twix"}});
       expect(fakeListener.listener.called).toEqual(true);
     })
   })
 })
+
