@@ -4,7 +4,8 @@ export default function createStore(reducer){
   let listeners = [];
 
   const getState = () => { return reducer(state, reducer); };
-  // const getState = () => { return this.state}
+// let state = 0 getState = () => { return state };
+
 
   const subscribe = (listener) => listeners.push(listener);
 
